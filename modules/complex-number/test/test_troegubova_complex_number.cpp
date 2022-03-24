@@ -29,7 +29,8 @@ TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Add_Complex_Numbers) {
     EXPECT_EQ(im1 + im2, sum.getIm());
 }
 
-TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Find_The_Difference_Of_Complex_Numbers) {
+TEST(Troegubova_Alexandra_ComplexNumberTest,
+    Can_Find_The_Difference_Of_Complex_Numbers) {
     double re1 = 12.5;
     double im1 = 20.6;
     double re2 = 1.25;
@@ -59,7 +60,8 @@ TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Multiply_Complex_Numbers) {
     EXPECT_EQ(re1 * im2 + im1 * re2, multiplication.getIm());
 }
 
-TEST(Troegubova_Alexandra_ComplexNumberTest, Correct_Comparison_Of_Equal_Numbers) {
+TEST(Troegubova_Alexandra_ComplexNumberTest,
+    Correct_Comparison_Of_Equal_Numbers) {
     double re1 = 1.25;
     double im1 = 3.67;
     double re2 = 1.25;
@@ -68,7 +70,7 @@ TEST(Troegubova_Alexandra_ComplexNumberTest, Correct_Comparison_Of_Equal_Numbers
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
 
-    EXPECT_TRUE(z1==z2);
+    EXPECT_TRUE(z1 == z2);
 }
 
 
