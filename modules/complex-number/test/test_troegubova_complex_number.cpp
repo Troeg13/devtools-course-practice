@@ -1,4 +1,4 @@
-// Copyright 2021 Troegubova Alexandra
+// Copyright 2022 Troegubova Alexandra
 
 #include <gtest/gtest.h>
 
@@ -10,8 +10,8 @@ TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Create_Complex_Number) {
 
     ComplexNumber z(re, im);
 
-    EXPECT_EQ(re, z.getRe());
-    EXPECT_EQ(im, z.getIm());
+    ASSERT_DOUBLE_EQ(re, z.getRe());
+    ASSERT_DOUBLE_EQ(im, z.getIm());
 }
 
 TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Add_Complex_Numbers) {
@@ -25,8 +25,8 @@ TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Add_Complex_Numbers) {
     ComplexNumber sum;
     sum = z1 + z2;
 
-    EXPECT_EQ(re1 + re2, sum.getRe());
-    EXPECT_EQ(im1 + im2, sum.getIm());
+    ASSERT_DOUBLE_EQ(re1 + re2, sum.getRe());
+    ASSERT_DOUBLE_EQ(im1 + im2, sum.getIm());
 }
 
 TEST(Troegubova_Alexandra_ComplexNumberTest,
@@ -41,8 +41,8 @@ TEST(Troegubova_Alexandra_ComplexNumberTest,
     ComplexNumber difference;
     difference = z1 - z2;
 
-    EXPECT_EQ(re1 - re2, difference.getRe());
-    EXPECT_EQ(im1 - im2, difference.getIm());
+    ASSERT_DOUBLE_EQ(re1 - re2, difference.getRe());
+    ASSERT_DOUBLE_EQ(im1 - im2, difference.getIm());
 }
 
 TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Multiply_Complex_Numbers) {
@@ -56,8 +56,8 @@ TEST(Troegubova_Alexandra_ComplexNumberTest, Can_Multiply_Complex_Numbers) {
     ComplexNumber multiplication;
     multiplication = z1 * z2;
 
-    EXPECT_EQ(re1 * re2 - im1 * im2, multiplication.getRe());
-    EXPECT_EQ(re1 * im2 + im1 * re2, multiplication.getIm());
+    ASSERT_DOUBLE_EQ(re1 * re2 - im1 * im2, multiplication.getRe());
+    ASSERT_DOUBLE_EQ(re1 * im2 + im1 * re2, multiplication.getIm());
 }
 
 TEST(Troegubova_Alexandra_ComplexNumberTest,
@@ -70,7 +70,7 @@ TEST(Troegubova_Alexandra_ComplexNumberTest,
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
 
-    EXPECT_TRUE(z1 == z2);
+    ASSERT_TRUE(z1 == z2);
 }
 
 
