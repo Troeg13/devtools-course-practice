@@ -107,8 +107,7 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
                 flag = false;
             }
         }
-    }
-    else {
+    } else {
         flag = false;
     }
 
@@ -133,8 +132,7 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
                 flag = false;
             }
         }
-    }
-    else {
+    } else {
         flag = false;
     }
 
@@ -186,7 +184,7 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     NamericInterval a(3, 8, true, false);
     NamericInterval b(3, 8, true, false);
 
-    ASSERT_TRUE(a==b);
+    ASSERT_TRUE(a == b);
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
