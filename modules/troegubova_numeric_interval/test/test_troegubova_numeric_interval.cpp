@@ -160,13 +160,33 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
-    Correctly_Detects_The_Inclusion_Of_Integer_Range) {
+    Correctly_Detects_The_Inclusion_Of_Another_Interval_3) {
+    NamericInterval a(4, 8, false, true);
+    NamericInterval b(4, 5, true, true);
+
+    bool res = a.containsInterval(b);
+
+    ASSERT_FALSE(res);
+}
+
+TEST(Troegubova_Alexandra_Numeric_Interval_Test,
+    Correctly_Detects_The_Inclusion_Of_Integer_Range_1) {
     NamericInterval a(3, 8, true, false);
     std::vector<int> range = { 5, 3, 6, 8 };
 
     bool res = a.containsIntegerRange(range);
 
     ASSERT_FALSE(res);
+}
+
+TEST(Troegubova_Alexandra_Numeric_Interval_Test,
+    Correctly_Detects_The_Inclusion_Of_Integer_Range_2) {
+    NamericInterval a(3, 8, true, false);
+    std::vector<int> range = { 3, 6, 4, 5, 3};
+
+    bool res = a.containsIntegerRange(range);
+
+    ASSERT_TRUE(res);
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,

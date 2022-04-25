@@ -31,8 +31,8 @@ std::vector<int> NamericInterval::getAllIntegerPoint() {
 
 bool NamericInterval::containsInterval(const NamericInterval& b) {
     if (left_border <= b.left_border && right_border >= b.right_border) {
-        if ((left_include && !b.left_include && left_border == b.left_border)
-            || (right_include && !b.right_include
+        if ((!left_include && b.left_include && left_border == b.left_border)
+            || (!right_include && b.right_include
                 && right_border == b.right_border)) {
             return false;
         }
