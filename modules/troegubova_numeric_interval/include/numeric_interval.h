@@ -11,11 +11,11 @@ class NamericInterval {
     NamericInterval(int left_border_, int right_border_,
         bool right_include_, bool left_include_);
 
-    std::vector<int> getBorderPoint();
-    std::vector<int> getAllIntegerPoint();
-    bool containsInterval(const NamericInterval& b);
-    bool containsIntegerRange(const std::vector<int>& b);
-    bool overlapsRange(const NamericInterval& b);
+    std::vector<int> getBorderPoint() const;
+    std::vector<int> getAllIntegerPoint()  const;
+    bool containsInterval(const NamericInterval& b)  const;
+    bool containsIntegerRange(const std::vector<int>& b)  const;
+    bool overlapsRange(const NamericInterval& b)  const;
 
     bool operator == (const NamericInterval& z) const;
     bool operator != (const NamericInterval& z) const;

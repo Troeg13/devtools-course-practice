@@ -1,7 +1,7 @@
 // Copyright 2022 Troegubova Alexandra
 
 #include <gtest/gtest.h>
-#include<vector>
+#include <vector>
 
 #include "include/numeric_interval.h"
 
