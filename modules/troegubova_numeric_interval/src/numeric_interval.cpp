@@ -41,7 +41,8 @@ bool NamericInterval::containsInterval(const NamericInterval& b) const {
     return false;
 }
 
-bool NamericInterval::containsIntegerRange(const std::vector<int>& range) const {
+bool NamericInterval::containsIntegerRange
+(const std::vector<int>& range) const {
     std::vector<int> border = this->getBorderPoint();
     int count_point = range.size();
     for (int i = 0; i < count_point; i++) {
