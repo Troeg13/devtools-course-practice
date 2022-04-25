@@ -182,7 +182,7 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     Correctly_Detects_The_Inclusion_Of_Integer_Range_2) {
     NamericInterval a(3, 8, true, false);
-    std::vector<int> range = { 3, 6, 4, 5, 3};
+    std::vector<int> range = { 3, 6, 4, 5};
 
     bool res = a.containsIntegerRange(range);
 
