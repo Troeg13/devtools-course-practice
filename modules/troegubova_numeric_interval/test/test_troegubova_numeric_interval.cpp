@@ -203,7 +203,7 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
-    The_Correctness_Of_The_Operator_Is_Not_Equality__2) {
+    The_Correctness_Of_The_Operator_Is_Not_Equality_2) {
     NamericInterval a(-3, 8, true, true);
     NamericInterval b(-3, 8, true, true);
 
