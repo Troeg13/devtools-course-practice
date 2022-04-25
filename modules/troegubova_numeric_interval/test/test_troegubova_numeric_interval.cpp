@@ -170,6 +170,16 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
+    Correctly_Detects_The_Inclusion_Of_Another_Interval_4) {
+    NamericInterval a(0, 5, true, false);
+    NamericInterval b(4, 5, true, true);
+
+    bool res = a.containsInterval(b);
+
+    ASSERT_FALSE(res);
+}
+
+TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     Correctly_Detects_The_Inclusion_Of_Integer_Range_1) {
     NamericInterval a(3, 8, true, false);
     std::vector<int> range = { 5, 3, 6, 8 };
@@ -190,13 +200,23 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
-    Correctly_Detects_The_Intersection_With_Another_Interval) {
+    Correctly_Detects_The_Intersection_With_Another_Interval_1) {
     NamericInterval a(3, 8, true, false);
     NamericInterval b(1, 8, false, false);
 
     bool res = a.overlapsRange(b);
 
     ASSERT_TRUE(res);
+}
+
+TEST(Troegubova_Alexandra_Numeric_Interval_Test,
+    Correctly_Detects_The_Intersection_With_Another_Interval_2) {
+    NamericInterval a(3, 8, true, false);
+    NamericInterval b(8, 13, true, false);
+
+    bool res = a.overlapsRange(b);
+
+    ASSERT_FALSE(res);
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
