@@ -75,7 +75,8 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     bool flag = true;
     std::vector<int> res = z.getAllIntegerPoint();
     int i = 0;
-    if (res.size() == b - a) {
+    int size = res.size();
+    if (size == b - a) {
         for (int j = a; j < b; j++) {
             if (res[i++] != j) {
                 flag = false;
@@ -99,7 +100,8 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     bool flag = true;
     std::vector<int> res = z.getAllIntegerPoint();
     int i = 0;
-    if (res.size() == b - a + 1) {
+    int size = res.size();
+    if (size == b - a + 1) {
         for (int j = a; j <= b; j++) {
             if (res[i++] != j) {
                 flag = false;
@@ -124,7 +126,8 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     bool flag = true;
     std::vector<int> res = z.getAllIntegerPoint();
     int i = 0;
-    if (res.size() == b - a) {
+    int size = res.size();
+    if (size == b - a) {
         for (int j = a + 1; j <= b; j++) {
             if (res[i++] != j) {
                 flag = false;
