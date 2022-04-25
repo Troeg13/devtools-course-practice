@@ -3,7 +3,7 @@
 #include "include/numeric_interval.h"
 
 NamericInterval::NamericInterval() : left_border(0), right_border(0),
-right_include(true), left_include(true) {}
+left_include(true), right_include(true) {}
 
 NamericInterval::NamericInterval(int left_border_,
      int right_border_, bool left_include_, bool right_include_)
@@ -25,7 +25,7 @@ std::vector<int> NamericInterval::getAllIntegerPoint() {
     return res;
 }
 
-bool NamericInterval::containsInterval(NamericInterval& b) {
+bool NamericInterval::containsInterval(const NamericInterval& b) {
     if (left_border <= b.left_border && right_border >= b.right_border) {
         if ((left_include && !b.left_include && left_border == b.left_border)
             || (right_include && !b.right_include && right_border == b.right_border)) {
@@ -47,9 +47,9 @@ bool NamericInterval::containsIntegerRange(const std::vector<int>& range) {
     return true;
 }
 
-bool NamericInterval::overlapsRange(NamericInterval& b) {
+bool NamericInterval::overlapsRange(const NamericInterval& b) {
     std::vector<int> border_a = this->getBorderPoint();
-    std::vector<int> border_b = b.getBorderPoint();
+    std::vector<int> border_b = const_cast<NamericInterval &>(b.getBorderPoint());
     if (border_a[0] > border_b[1] || border_a[1] < border_b[1]) {
         return false;
     }
