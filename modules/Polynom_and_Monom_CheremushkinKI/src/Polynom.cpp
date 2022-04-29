@@ -1,5 +1,9 @@
 // Copyright 2022 Cheremushkin Kirill
+
+#include <string.h>
+
 #include "include/Polynom.h"
+#include "include/Monom.h"
 
 Polynom::Polynom() {
     StartMonom = new Monom();
@@ -463,4 +467,35 @@ Polynom::~Polynom() {
 
 Monom* Polynom::GetStartMonom() {
      return StartMonom;
+}
+
+Monom CurrentMonom(Monom* p, int id) {
+    Monom res;
+    if (id != 0)
+        res = CurrentMonom(p->GetNextMonom(), --id);
+    else
+        return *p;
+    return res;
+}
+
+std::string GetSign(double coef) {
+    if (coef >= 0)
+        return "+";
+    return "";
+}
+
+std::ostream& operator<<
+(std::ostream& stream, const Polynom& pol)
+{
+    Monom tmp;
+    for (int i = 0; i < pol.SIZE; ++i) {
+        tmp = CurrentMonom(pol.StartMonom, i);
+        if (!i)
+            stream << tmp.GetCoef() << "x^"
+            << tmp.GetDegree();
+        else
+            stream << GetSign(tmp.GetCoef())
+            << tmp.GetCoef() << "x^" << tmp.GetDegree();
+    }
+    return stream;
 }

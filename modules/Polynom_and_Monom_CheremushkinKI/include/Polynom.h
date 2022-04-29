@@ -1,9 +1,12 @@
 // Copyright 2022 Cheremushkin Kirill
+
 #ifndef MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_H_
 #define MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_H_
-#pragma once
-#include "Monom.h"
+
 #include <iostream>
+
+#include "Monom.h"
+
 class Polynom : public Monom {
  private:
     Monom* StartMonom;
@@ -26,6 +29,11 @@ class Polynom : public Monom {
     Polynom operator-(const Polynom& polynom);
     Polynom operator*(const Polynom& polynom);
     Polynom operator/(const Polynom& polynom);
+
+    friend std::ostream& operator<<
+        (std::ostream& stream, const Polynom& pol);
+    friend std::string GetSign(double coef);
+    friend Monom CurrentMonom(Monom* p, int id);
 
     ~Polynom();
     Monom* GetStartMonom();
