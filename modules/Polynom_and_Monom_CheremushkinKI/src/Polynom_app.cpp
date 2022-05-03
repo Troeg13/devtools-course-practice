@@ -25,11 +25,11 @@ void PolynomCalculator::help(const char* appname, const char* message) {
         "Where <operation> is one of '+', '-', '*', '/', " + 
         " and the polynomials correspond to the following format : \n\n" +
 
-        "<coef_1>x^<deg_1><'+' or '-'><coef_2>x^<deg_2><'+' or '-'>ets\n" +
-        "Where all coefficients and degrees of monomials are double-precision numbers, " +
+        "<coef_1>x**<deg_1><'+' or '-'><coef_2>x**<deg_2><'+' or '-'>ets\n" +
+        "Where all coefficients and degrees of monomials are double - precision numbers, " +
         "and there should be no spaces in the polynomial record.\n" + 
         "Example of arguments:\n\n" +
-        "  $ " + appname + " 5x^2+6x^1 * 1x^9-3x^2.\n";
+        "  $ " + appname + " 5x^2+6x^1+1x^0 * 1x^9-3x^2.\n";
 }
 
 bool PolynomCalculator::validateNumberOfArguments(int argc, const char** argv) {
@@ -80,14 +80,22 @@ Polynom parsePolynom(const char* arg) {
     double coef;
     int deg;
     coef = strtod(end, &end);
-    deg = static_cast<int>(strtod(end + 1, &end));
+    const char tmp[] = { end[0], end[1], '\0'};
+    if (strcmp(tmp, "x^") != 0) {
+        throw std::string("Wrong polynomial format!");
+    }
+    deg = static_cast<int>(strtod(end + 2, &end));
     Monom m(coef, deg);
 
     p.GetStartMonom()->SetCoef(m.GetCoef());
     p.GetStartMonom()->SetDegree(m.GetDegree());
     while (end[0]) {
         coef = strtod(end, &end);
-        deg = int(strtod(end + 1, &end));
+        const char tmp[] = { end[0], end[1], '\0' };
+        if (strcmp(tmp, "x^") != 0) {
+            throw std::string("Wrong polynomial format!");
+        }
+        deg = int(strtod(end + 2, &end));
         m.SetCoef(coef);
         m.SetDegree(deg);
         addMonom(p.GetStartMonom(), m);
@@ -101,6 +109,7 @@ std::string PolynomCalculator::operator()
 (int argc, const char** argv) {
     Arguments args;
     std::ostringstream stream;
+
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
