@@ -1,15 +1,14 @@
 // Copyright 2022 Troegubova Alexandra
 
-#include "include/Monom.h"
-#include "include/Polynom.h"
 #include "include/Polynom_app.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include <string>
 #include <sstream>
+#include "include/Monom.h"
+#include "include/Polynom.h"
 
 PolynomCalculator::PolynomCalculator() : message_("") {}
 
@@ -22,13 +21,13 @@ void PolynomCalculator::help(const char* appname, const char* message) {
         "  $ " + appname + " <polynom_1> " +
         "<operation> <polynom_2>\n\n" +
 
-        "Where <operation> is one of '+', '-', '*', '/', " + 
+        "Where <operation> is one of '+', '-', '*', '/', " +
         " and the polynomials correspond to the following format : \n\n" +
 
         "<coef_1>x**<deg_1><'+' or '-'><coef_2>x**<deg_2><'+' or '-'>ets\n" +
-        "Where all coefficients and degrees of monomials are double - precision numbers, " +
-        "and there should be no spaces in the polynomial record.\n" + 
-        "Example of arguments:\n\n" +
+        "Where all coefficients and degrees of monomials are " +
+        "double - precision numbers, and there should be no spaces " +
+        "in the polynomial record.\n" + "Example of arguments:\n\n" +
         "  $ " + appname + " 5x^2+6x^1+1x^0 * 1x^9-3x^2.\n";
 }
 
@@ -36,8 +35,7 @@ bool PolynomCalculator::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 4) {
+    } else if (argc != 4) {
         help(argv[0], "ERROR: Should be 4 arguments.\n\n");
         return false;
     }
@@ -48,17 +46,13 @@ char parseOperation(const char* arg) {
     char op;
     if (strcmp(arg, "+") == 0) {
         op = '+';
-    }
-    else if (strcmp(arg, "-") == 0) {
+    } else if (strcmp(arg, "-") == 0) {
         op = '-';
-    }
-    else if (strcmp(arg, "*") == 0) {
+    } else if (strcmp(arg, "*") == 0) {
         op = '*';
-    }
-    else if (strcmp(arg, "/") == 0) {
+    } else if (strcmp(arg, "/") == 0) {
         op = '/';
-    }
-    else {
+    } else {
         throw std::string("Wrong operation format!");
     }
     return op;
@@ -95,7 +89,7 @@ Polynom parsePolynom(const char* arg) {
         if (strcmp(tmp, "x^") != 0) {
             throw std::string("Wrong polynomial format!");
         }
-        deg = int(strtod(end + 2, &end));
+        deg = static_cast<int>(strtod(end + 2, &end));
         m.SetCoef(coef);
         m.SetDegree(deg);
         addMonom(p.GetStartMonom(), m);
@@ -123,7 +117,7 @@ std::string PolynomCalculator::operator()
     }
 
     Polynom res;
-    
+
     switch (args.operation) {
     case '+':
         res = args.polynom_1 + args.polynom_2;
