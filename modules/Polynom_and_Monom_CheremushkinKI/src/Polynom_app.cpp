@@ -75,7 +75,7 @@ void addMonom(Monom* p, const Monom& new_m) {
 Polynom parsePolynom(const char* arg) {
     int size = 1;
     Polynom p(size);
-    char* end = _strdup(arg);
+    char* end = strdup(arg);
 
     double coef;
     int deg;
