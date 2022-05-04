@@ -3,6 +3,8 @@
 #ifndef MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_H_
 #define MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_H_
 
+#include <string>
+
 #include "Monom.h"
 
 class Polynom : public Monom {
@@ -32,7 +34,7 @@ class Polynom : public Monom {
     Polynom operator-(const Polynom& polynom);
     Polynom operator*(const Polynom& polynom);
     Polynom operator/(const Polynom& polynom);
-    
+
     ~Polynom();
     Monom* GetStartMonom();
 };
