@@ -1,6 +1,6 @@
 // Copyright 2022 Cheremushkin Kirill
 
-#include <string.h>
+#include <string>
 
 #include "include/Polynom.h"
 #include "include/Monom.h"
@@ -469,7 +469,7 @@ Monom* Polynom::GetStartMonom() {
      return StartMonom;
 }
 
-Monom CurrentMonom(Monom* p, int id) {
+Monom Polynom::CurrentMonom(Monom* p, int id) {
     Monom res;
     if (id != 0)
         res = CurrentMonom(p->GetNextMonom(), --id);
@@ -478,24 +478,34 @@ Monom CurrentMonom(Monom* p, int id) {
     return res;
 }
 
-std::string GetSign(double coef) {
+std::string Polynom::GetSign(double coef) {
     if (coef >= 0)
         return "+";
     return "";
 }
 
-std::ostream& operator<<
-(std::ostream& stream, const Polynom& pol)
-{
-    Monom tmp;
-    for (int i = 0; i < pol.SIZE; ++i) {
-        tmp = CurrentMonom(pol.StartMonom, i);
-        if (!i)
-            stream << tmp.GetCoef() << "x^"
-            << tmp.GetDegree();
-        else
-            stream << GetSign(tmp.GetCoef())
-            << tmp.GetCoef() << "x^" << tmp.GetDegree();
+std::string Polynom::FormattingCoeff(double coef){
+    std::string res = std::to_string(coef);
+    while (res[res.size() - 1] == '0') {
+        res.erase(res.size() - 1, 1);
     }
-    return stream;
+    if (res[res.size() - 1] == '.') {
+        res.erase(res.size() - 1, 1);
+    }
+    return res;
+}
+
+std::string Polynom::StrPolynom() {
+    Monom tmp;
+    std::string res;
+    for (int i = 0; i < SIZE; ++i) {
+        tmp = CurrentMonom(StartMonom, i);
+        if (!i)
+            res += FormattingCoeff(tmp.GetCoef()) + "x^"
+            + std::to_string(tmp.GetDegree());
+        else
+            res += GetSign(tmp.GetCoef())
+            + FormattingCoeff(tmp.GetCoef()) + "x^" + std::to_string(tmp.GetDegree());
+    }
+    return res;
 }

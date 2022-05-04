@@ -127,24 +127,24 @@ std::string PolynomCalculator::operator()
     switch (args.operation) {
     case '+':
         res = args.polynom_1 + args.polynom_2;
-        stream << args.polynom_1 << "  +  " <<
-            args.polynom_2 << "  =  " << res;
+        stream << args.polynom_1.StrPolynom() << "  +  " <<
+            args.polynom_2.StrPolynom() << "  =  " << res.StrPolynom();
         break;
     case '-':
         res = args.polynom_1 - args.polynom_2;
-        stream << args.polynom_1 << "  -  " <<
-            args.polynom_2 << "  =  " << res;
+        stream << args.polynom_1.StrPolynom() << "  -  " <<
+            args.polynom_2.StrPolynom() << "  =  " << res.StrPolynom();
         break;
     case '*':
         res = args.polynom_1 * args.polynom_2;
-        stream << args.polynom_1 << "  *  " <<
-            args.polynom_2 << "  =  " << res;
+        stream << args.polynom_1.StrPolynom() << "  *  " <<
+            args.polynom_2.StrPolynom() << "  =  " << res.StrPolynom();
         break;
     case '/':
         try {
             res = args.polynom_1 / args.polynom_2;
-            stream << args.polynom_1 << "  /  " <<
-                args.polynom_2 << "  =  " << res;
+            stream << args.polynom_1.StrPolynom() << "  /  " <<
+                args.polynom_2.StrPolynom() << "  =  " << res.StrPolynom();
             break;
         }
         catch (std::string& str) {

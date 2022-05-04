@@ -3,14 +3,15 @@
 #ifndef MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_H_
 #define MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_H_
 
-#include <iostream>
-
 #include "Monom.h"
 
 class Polynom : public Monom {
  private:
     Monom* StartMonom;
     int SIZE = 1;
+    std::string FormattingCoeff(double coef);
+    std::string GetSign(double coef);
+    Monom CurrentMonom(Monom* p, int id);
  public :
     Polynom();
     explicit Polynom(int size);
@@ -19,6 +20,8 @@ class Polynom : public Monom {
     void ClearList();
     void SetSize(int size);
     void Equalizer();
+    std::string StrPolynom();
+
     Polynom& operator+(const Monom& monom);
     Polynom& operator-(const Monom& monom);
     Polynom& operator*(const Monom& monom);
@@ -29,12 +32,7 @@ class Polynom : public Monom {
     Polynom operator-(const Polynom& polynom);
     Polynom operator*(const Polynom& polynom);
     Polynom operator/(const Polynom& polynom);
-
-    friend std::ostream& operator<<
-        (std::ostream& stream, const Polynom& pol);
-    friend std::string GetSign(double coef);
-    friend Monom CurrentMonom(Monom* p, int id);
-
+    
     ~Polynom();
     Monom* GetStartMonom();
 };

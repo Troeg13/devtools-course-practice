@@ -247,16 +247,3 @@ TEST(Cheremushkin_Kirill_Polynom_Polynom, Polynom_division_Polynom) {
     ASSERT_EQ(0.15, Res.GetStartMonom()->GetNextMonom()->GetCoef());
     ASSERT_EQ(-5, Res.GetStartMonom()->GetNextMonom()->GetDegree());
 }
-TEST(Cheremushkin_Kirill_Polynom_Polynom, Correctness_Of_The_Output_Operator) {
-    // Create Monom  & Polynom
-    Monom test1(6, 4);  // Create  monom 1-coef, 2-degree
-    Monom test2(3, 2);
-    Polynom Test1(1);
-    // Act
-    Test1.GetStartMonom()->SetCoef(test1.GetCoef());
-    Test1.GetStartMonom()->SetDegree(test1.GetDegree());
-    Test1.SetSize(2);
-    Test1.GetStartMonom()->SetNextMonom(test2);
-    // Assert
-    ASSERT_NO_THROW(std::cout<<Test1);
-}
