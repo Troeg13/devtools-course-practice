@@ -484,7 +484,7 @@ std::string Polynom::GetSign(double coef) {
     return "";
 }
 
-std::string Polynom::FormattingCoeff(double coef){
+std::string Polynom::FormattingCoeff(double coef) {
     std::string res = std::to_string(coef);
     while (res[res.size() - 1] == '0') {
         res.erase(res.size() - 1, 1);
@@ -505,7 +505,8 @@ std::string Polynom::StrPolynom() {
             + std::to_string(tmp.GetDegree());
         else
             res += GetSign(tmp.GetCoef())
-            + FormattingCoeff(tmp.GetCoef()) + "x^" + std::to_string(tmp.GetDegree());
+            + FormattingCoeff(tmp.GetCoef()) + "x^" +
+            std::to_string(tmp.GetDegree());
     }
     return res;
 }
