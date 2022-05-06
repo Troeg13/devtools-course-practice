@@ -24,7 +24,7 @@ void PolynomCalculator::help(const char* appname, const char* message) {
         "Where <operation> is one of '+', '-', '*', '/', " +
         " and the polynomials correspond to the following format : \n\n" +
 
-        "<coef_1>x**<deg_1><'+' or '-'><coef_2>x**<deg_2><'+' or '-'>ets\n" +
+        "<coeff_1>x**<deg_1><'+' or '-'><coeff_2>x**<deg_2><'+' or '-'>ets\n" +
         "Where all coefficients and degrees of monomials are " +
         "double - precision numbers, and there should be no spaces " +
         "in the polynomial record.\n" + "Example of arguments:\n\n" +
@@ -71,26 +71,26 @@ Polynom parsePolynom(const char* arg) {
     Polynom p(size);
     char* end = strdup(arg);
 
-    double coef;
+    double coeff;
     int deg;
-    coef = strtod(end, &end);
+    coeff = strtod(end, &end);
     const char tmp[] = { end[0], end[1], '\0'};
     if (strcmp(tmp, "x^") != 0) {
         throw std::string("Wrong polynomial format!");
     }
     deg = static_cast<int>(strtod(end + 2, &end));
-    Monom m(coef, deg);
+    Monom m(coeff, deg);
 
     p.GetStartMonom()->SetCoef(m.GetCoef());
     p.GetStartMonom()->SetDegree(m.GetDegree());
     while (end[0]) {
-        coef = strtod(end, &end);
+        coeff = strtod(end, &end);
         const char tmp[] = { end[0], end[1], '\0' };
         if (strcmp(tmp, "x^") != 0) {
             throw std::string("Wrong polynomial format!");
         }
         deg = static_cast<int>(strtod(end + 2, &end));
-        m.SetCoef(coef);
+        m.SetCoef(coeff);
         m.SetDegree(deg);
         addMonom(p.GetStartMonom(), m);
         size++;

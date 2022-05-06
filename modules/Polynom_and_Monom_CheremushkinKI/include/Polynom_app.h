@@ -3,9 +3,9 @@
 #ifndef MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_APP_H_
 #define MODULES_POLYNOM_AND_MONOM_CHEREMUSHKINKI_INCLUDE_POLYNOM_APP_H_
 
-#include <string>
-
 #include "Polynom.h"
+
+#include <string>
 
 class PolynomCalculator {
  public:
